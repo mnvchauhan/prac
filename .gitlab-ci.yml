@@ -1,0 +1,14 @@
+stages:
+  - test
+  
+test_api:
+  stage: test
+  image: python:3.9
+
+  before_script:
+    - pip install -r requirements.text
+  
+  script:
+    - python api/app.py &
+    - sleep 3
+    - pytest tests/integration
